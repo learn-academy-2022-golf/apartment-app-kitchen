@@ -1,4 +1,8 @@
 require "rails_helper"
 
-RSpec.describe "Apartments", type: :request do
-end
+describe "GET /apartments" do
+    it "renders index of apartments", type: :request do
+      get "/apartments"
+      expect(response).to be_successful
+    end
+  end
