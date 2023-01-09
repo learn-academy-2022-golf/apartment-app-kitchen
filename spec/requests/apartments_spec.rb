@@ -3,7 +3,11 @@ require "rails_helper"
 RSpec.describe "Apartments", type: :request do
   describe "GET /index" do
     it "gets a list of apartments" do
-      Apartment.create(
+      user = User.create(
+      email: "test@example.com", 
+      password: "password", 
+      password_confirmation: "password")
+      user.apartments.create(
         street: "4 Privet Drive",
         city: "Little Whinging",
         state: "Surrey",
@@ -16,12 +20,11 @@ RSpec.describe "Apartments", type: :request do
         image: "https://c8.alamy.com/comp/B0RJGE/small-bungalow-home-with-pathway-in-addlestone-surrey-uk-B0RJGE.jpg"
       )
 
-      get '/apartments' do
+      get '/apartments' 
 
       apartment = JSON.parse(response.body)
       expect(response).to have_http_status(200)
       expect(apartment.length).to eq 1
-      end
     end
   end
 end
