@@ -27,6 +27,7 @@ const App = (props) => {
       })
       .catch((error) => console.log(error))
   }
+  console.log(props.current_user)
 
   return (
     <BrowserRouter>
