@@ -1,8 +1,27 @@
 require "rails_helper"
 
-describe "GET /apartments" do
-    it "renders index of apartments", type: :request do
-      get "/apartments"
-      expect(response).to be_successful
+RSpec.describe "Apartments", type: :request do
+  describe "GET /index" do
+    it "gets a list of apartments" do
+      Apartment.create(
+        street: "4 Privet Drive",
+        city: "Little Whinging",
+        state: "Surrey",
+        manager: "Mr. Potter",
+        email: "potter@example.com",
+        price: 2000,
+        bedrooms: 3,
+        bathrooms: 2,
+        pets: "yes",
+        image: "https://c8.alamy.com/comp/B0RJGE/small-bungalow-home-with-pathway-in-addlestone-surrey-uk-B0RJGE.jpg"
+      )
+
+      get '/apartments' do
+
+      apartment = JSON.parse(response.body)
+      expect(response).to have_http_status(200)
+      expect(apartment.length).to eq 1
+      end
     end
   end
+end
