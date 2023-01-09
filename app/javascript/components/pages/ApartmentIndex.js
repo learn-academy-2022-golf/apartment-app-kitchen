@@ -4,7 +4,7 @@ import { Card, CardBody, CardTitle, CardSubtitle, Button } from "reactstrap";
 const ApartmentIndex = ({ apartments }) => {
   return (
     <main className="apartment-index-cards">
-      {apartments.map((apartment, index) => {
+      {apartments?.map((apartment, index) => {
         return (
           <Card
             style={{

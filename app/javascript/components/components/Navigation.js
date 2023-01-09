@@ -24,6 +24,20 @@ const Navigation = ({
             </a>
           </NavItem>
         )}
+        {logged_in && (
+          <NavItem>
+            <NavLink to="/apartmentnew" className="nav-link">
+              Add apartment
+            </NavLink>
+          </NavItem>
+        )}
+        {logged_in && (
+          <NavItem>
+            <NavLink to="/apartmentindex" className="nav-link">
+              View your apartment listings
+            </NavLink>
+          </NavItem>
+        )}
         {!logged_in && (
           <NavItem>
             <a href={sign_in_route} className="nav-link">
@@ -38,6 +52,11 @@ const Navigation = ({
             </a>
           </NavItem>
         )}
+          <NavItem>
+            <NavLink to="/apartmentindex" className="nav-link">
+              All apartments
+            </NavLink>
+          </NavItem>
       </Nav>
     </>
   )
