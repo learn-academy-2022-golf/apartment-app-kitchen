@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardBody, CardTitle, CardSubtitle, Button } from "reactstrap";
+import { NavLink } from "react-router-dom";
 
 const ApartmentIndex = ({ apartments }) => {
   return (
@@ -27,7 +28,9 @@ const ApartmentIndex = ({ apartments }) => {
               <CardSubtitle className="mb-2 text-muted" tag="h6">
                 Bathrooms: {apartment.bathrooms}
               </CardSubtitle>
-              <Button>See More Details</Button>
+              <NavLink to={`/apartmentshow/${apartment.id}`}>
+                <Button>See More Details</Button>
+              </NavLink>
             </CardBody>
           </Card>
         );
