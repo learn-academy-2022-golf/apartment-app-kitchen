@@ -6,3 +6,10 @@
   sign_out_route: destroy_user_session_path
 } %>
 
+<h1>My Apartments</h1>
+
+<ul>
+  <% @apartments.each do |apartment| %>
+    <li><%= link_to apartment.street, apartment %></li>
+  <% end %>
+</ul>
