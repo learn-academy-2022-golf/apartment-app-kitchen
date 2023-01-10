@@ -1,11 +1,8 @@
 class ApartmentsController < ApplicationController
 
-
     def index
-        if user_signed_in?
-          @apartments = current_user.apartments
-        else
-          @apartments = Apartment.all
-        end
+       
+        @apartments = Apartment.all
+        render json: @apartments
       end
 end

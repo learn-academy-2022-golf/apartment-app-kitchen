@@ -9,6 +9,7 @@ const Navigation = ({
   sign_in_route,
   sign_out_route
 }) => {
+  
   return (
     <>
       <Nav>
@@ -31,13 +32,13 @@ const Navigation = ({
             </NavLink>
           </NavItem>
         )}
-        {logged_in && (
-          <NavItem>
-            <NavLink to="/apartmentindex" className="nav-link">
-              View your apartment listings
-            </NavLink>
-          </NavItem>
-        )}
+       {logged_in &&(
+        <NavItem>
+          <a href= "/myapartments" className="nav-link">
+            View my apartment listings
+          </a>
+        </NavItem>
+       )}
         {!logged_in && (
           <NavItem>
             <a href={sign_in_route} className="nav-link">
