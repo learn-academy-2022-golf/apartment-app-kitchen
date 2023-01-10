@@ -7,16 +7,6 @@ const ApartmentShow = ({ apartments }) => {
   const currentApartment = apartments?.find(
     (apartment) => apartment.id === +id
   );
-  // const currentApartment = apartments[id - 1]
-  // console.log(currentApartment?.id);
-
-  // const ApartmentShow = () => {
-  //   return(
-  //     <>
-  //     <h3>ApartmentShow</h3>
-  //     </>
-  //   )
-  // }
 
   return (
     <>
