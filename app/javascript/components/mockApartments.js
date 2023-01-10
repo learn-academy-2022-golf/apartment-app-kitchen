@@ -9,8 +9,9 @@ const apartments = [
     bedrooms: 3,
     bathrooms: 2,
     pets: "yes",
+    id: 1,
     image:
-      "https://c8.alamy.com/comp/B0RJGE/small-bungalow-home-with-pathway-in-addlestone-surrey-uk-B0RJGE.jpg"
+      "https://c8.alamy.com/comp/B0RJGE/small-bungalow-home-with-pathway-in-addlestone-surrey-uk-B0RJGE.jpg",
   },
   {
     street: "15 Yemen Road",
@@ -22,8 +23,9 @@ const apartments = [
     bedrooms: 3,
     bathrooms: 2,
     pets: "yes",
+    id: 2,
     image:
-      "https://i.pinimg.com/736x/4f/c1/ce/4fc1ce196ea1412f670d477a026ba2c6--saudi-arabia-drawing-reference.jpg"
+      "https://i.pinimg.com/736x/4f/c1/ce/4fc1ce196ea1412f670d477a026ba2c6--saudi-arabia-drawing-reference.jpg",
   },
   {
     street: "742 Evengreen Terrace",
@@ -35,9 +37,10 @@ const apartments = [
     bedrooms: 3,
     bathrooms: 2,
     pets: "yes",
+    id: 3,
     image:
-      "https://upload.wikimedia.org/wikipedia/en/c/ca/742_Evergreen_Terrace.png"
-  }
-]
+      "https://upload.wikimedia.org/wikipedia/en/c/ca/742_Evergreen_Terrace.png",
+  },
+];
 
-export default apartments
+export default apartments;

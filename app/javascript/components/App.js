@@ -50,7 +50,10 @@ const App = (props) => {
             <ApartmentProtectedIndex apartments={apartments} {...props} />
           }
         />
-        <Route path="/apartmentshow" element={<ApartmentShow />} />
+        <Route
+          path="/apartmentshow/:id"
+          element={<ApartmentShow apartments={apartments} />}
+        />
         <Route path="/apartmentnew" element={<ApartmentNew {...props} createApartment={createApartment}/>} />
         <Route path="/apartmentedit" element={<ApartmentEdit />} />
         <Route element={<NotFound />} />
