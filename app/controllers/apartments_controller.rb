@@ -7,6 +7,11 @@ class ApartmentsController < ApplicationController
         apartment = Apartment.create(apartment_params)
         render json: apartment
     end
+    def update
+        apartment = Apartment.find(params[:id])
+        apartment.update(apartment_params)
+        render json: apartment
+    end
 
     private
     def apartment_params
