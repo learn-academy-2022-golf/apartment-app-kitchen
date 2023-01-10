@@ -30,6 +30,10 @@ const App = (props) => {
   // }
   // console.log(props.current_user)
 
+  const createApartment = (apartment) => {
+    console.log(apartment)
+  }
+
   return (
     <BrowserRouter>
       <Header {...props} />
@@ -50,7 +54,7 @@ const App = (props) => {
           path="/apartmentshow/:id"
           element={<ApartmentShow apartments={apartments} />}
         />
-        <Route path="/apartmentnew" element={<ApartmentNew />} />
+        <Route path="/apartmentnew" element={<ApartmentNew {...props} createApartment={createApartment}/>} />
         <Route path="/apartmentedit" element={<ApartmentEdit />} />
         <Route element={<NotFound />} />
       </Routes>
