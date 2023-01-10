@@ -1,5 +1,6 @@
 class ApartmentsController < ApplicationController
-    def index 
+
+    def index
         @apartments = Apartment.all
         render json: @apartments
     end
@@ -17,4 +18,5 @@ class ApartmentsController < ApplicationController
     def apartment_params
         params.require(:apartment).permit(:street, :city, :state, :manager, :email, :price, :bedrooms, :bathrooms, :pets, :image, :user_id)
     end
+
 end
