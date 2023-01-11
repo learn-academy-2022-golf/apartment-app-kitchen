@@ -24,6 +24,7 @@ const ApartmentNew = ({ createApartment, logged_in, current_user }) => {
     newApartment.user_id = current_user.id
     createApartment(newApartment)
     navigate("/apartmentindex")
+    document.location.reload()
   }
   if (logged_in === true) {
     return (

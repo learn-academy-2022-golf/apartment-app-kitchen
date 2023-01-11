@@ -14,25 +14,53 @@ import NotFound from "./pages/NotFound";
 import mockApartments from "./mockApartments";
 
 const App = (props) => {
-  const [apartments, setApartments] = useState(mockApartments);
+  const [apartments, setApartments] = useState([]);
+  // const  [newApartment,setNewApartment] = useState(null)
+  useEffect(() => {
+    readApartments()
+  }, [])
 
-  // useEffect(() => {
-  //   readApartments()
-  // }, [])
-
-  // const readApartments = () => {
-  //   fetch("/apartments")
-  //     .then((response) => response.json())
-  //     .then((payload) => {
-  //       setApartments(payload)
-  //     })
-  //     .catch((error) => console.log(error))
-  // }
-  // console.log(props.current_user)
+  const readApartments = () => {
+    fetch("/apartments")
+      .then((response) => response.json())
+      .then((payload) => {
+        setApartments(payload)
+      })
+      .catch((error) => console.log(error))
+  }
 
   const createApartment = (apartment) => {
-    console.log(apartment)
-  }
+        fetch("http://localhost:3000/apartments", {
+          method: "POST", 
+          headers: {
+            "Content-Type": "application/json", 
+          },
+          body: JSON.stringify({ apartment }),
+        })
+        .then((response) => response.json())     
+        .then(() => {
+          setApartments(apartment)
+          console.log("Created Apartment:", apartment)
+        })
+        .then(() => readApartments ()) 
+        .catch((error) => console.error(error))
+      }
+
+        // fetch("http://localhost:3000/apartments", 
+        // {
+        //   body: JSON.stringify(apartment),
+        //   headers: {
+        //     "Content-Type": "application/json"
+        // },
+        // method: "POST"
+        // })
+        //   .then((response) => response.json())
+        //   .then(() => readApartments ())
+        //   .catch((error) => console.log("Apartment create error:", error))
+        //   console.log("Created Apartment:", apartment)
+        // }
+        
+
 
   const updateApartment = (apartment) => {
     console.log(apartment)
@@ -57,7 +85,7 @@ const App = (props) => {
           path="/apartmentshow/:id"
           element={<ApartmentShow {...props} apartments={apartments} />}
         />
-        <Route path="/apartmentnew" element={<ApartmentNew {...props} createApartment={createApartment}/>} />
+        <Route path="/apartmentnew" element={<ApartmentNew {...props} createApartment={createApartment} readApartments = {readApartments}/>} />
         <Route path="/apartmentedit/:id" element={<ApartmentEdit {...props} updateApartment={updateApartment} apartments={apartments}/>} />
         <Route element={<NotFound />} />
       </Routes>
