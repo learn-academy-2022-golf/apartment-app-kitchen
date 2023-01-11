@@ -34,12 +34,15 @@ const App = (props) => {
     console.log(apartment)
   }
 
+  const updateApartment = (apartment) => {
+    console.log(apartment)
+  }
+
   return (
     <BrowserRouter>
       <Header {...props} />
       <Routes>
         <Route exact path="/" element={<Home {...props} />} />
-
         <Route
           path="/apartmentindex"
           element={<ApartmentIndex apartments={apartments} />}
@@ -52,10 +55,10 @@ const App = (props) => {
         />
         <Route
           path="/apartmentshow/:id"
-          element={<ApartmentShow apartments={apartments} />}
+          element={<ApartmentShow {...props} apartments={apartments} />}
         />
         <Route path="/apartmentnew" element={<ApartmentNew {...props} createApartment={createApartment}/>} />
-        <Route path="/apartmentedit" element={<ApartmentEdit />} />
+        <Route path="/apartmentedit/:id" element={<ApartmentEdit {...props} updateApartment={updateApartment} apartments={apartments}/>} />
         <Route element={<NotFound />} />
       </Routes>
       <Footer />

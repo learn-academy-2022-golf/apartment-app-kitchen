@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import { Card, CardBody, CardTitle, CardSubtitle, Button } from "reactstrap";
 
 const ApartmentShow = ({ apartments }) => {
@@ -48,6 +48,11 @@ const ApartmentShow = ({ apartments }) => {
               <CardSubtitle className="mb-2 text-muted" tag="h6">
                 Pets: {currentApartment.pets}
               </CardSubtitle>
+              <NavLink to={`/apartmentedit/${currentApartment.id}`}>
+                <Button>
+                  Edit apartment
+                </Button>
+              </NavLink>
             </CardBody>
           </Card>
         )}
