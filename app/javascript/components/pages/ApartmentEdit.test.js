@@ -1,5 +1,5 @@
 import React from "react"
-import { render } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import ApartmentEdit from "./ApartmentEdit"
 import { MemoryRouter, Routes, Route } from "react-router-dom"
 import mockApartments from "../mockApartments"
@@ -15,8 +15,9 @@ describe("<ApartmentEdit />", () => {
     )
 })
 it("renders without crashing", () => {})
-
-
+it("displays a page if user is not logged in", () => {
+  expect(screen.getByText("Cannot update your apartments without logging in")).toBeInTheDocument()
+})
 })
 
 
