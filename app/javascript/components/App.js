@@ -11,24 +11,22 @@ import ApartmentNew from "./pages/ApartmentNew";
 import ApartmentShow from "./pages/ApartmentShow";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
-import mockApartments from "./mockApartments";
 
 const App = (props) => {
-  const [apartments, setApartments] = useState(mockApartments);
+  const [apartments, setApartments] = useState([]);
 
-  // useEffect(() => {
-  //   readApartments()
-  // }, [])
+  useEffect(() => {
+    readApartments()
+  }, [])
 
-  // const readApartments = () => {
-  //   fetch("/apartments")
-  //     .then((response) => response.json())
-  //     .then((payload) => {
-  //       setApartments(payload)
-  //     })
-  //     .catch((error) => console.log(error))
-  // }
-  // console.log(props.current_user)
+  const readApartments = () => {
+    fetch("/apartments")
+      .then((response) => response.json())
+      .then((payload) => {
+        setApartments(payload)
+      })
+      .catch((error) => console.log(error))
+  }
 
   const createApartment = (apartment) => {
     console.log(apartment)
