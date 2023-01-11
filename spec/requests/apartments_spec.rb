@@ -94,4 +94,27 @@ RSpec.describe "Apartments", type: :request do
       expect(updated_apartment.price).to eq '2850'
     end
   end
+  describe "DESTROY /delete" do
+    it "deletes an apartment" do
+      user = User.create(
+      email: "test@example.com", 
+      password: "password", 
+      password_confirmation: "password")
+      apartment = user.apartments.create(
+        street: "4 Privet Drive",
+        city: "Little Whinging",
+        state: "Surrey",
+        manager: "Mr. Potter",
+        email: "potter@example.com",
+        price: 2000,
+        bedrooms: 3,
+        bathrooms: 2,
+        pets: "yes",
+        image: "https://c8.alamy.com/comp/B0RJGE/small-bungalow-home-with-pathway-in-addlestone-surrey-uk-B0RJGE.jpg"
+      )
+      expect do 
+        delete apartment_url(apartment)
+      end.to change(Apartment, :count).by(-1)
+    end
+  end 
 end
