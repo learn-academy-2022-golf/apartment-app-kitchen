@@ -47,18 +47,10 @@ const ApartmentShow = ({ apartments }) => {
               <CardSubtitle className="mb-2 text-muted" tag="h6">
                 Pets: {currentApartment.pets}
               </CardSubtitle>
-              <NavLink to={`/apartmentedit/${currentApartment.id}`}>
-                <Button>
-                  Edit apartment
-                </Button>
-              </NavLink>
             </CardBody>
             <NavLink to={`/apartmentindex`}>
-                <Button>Back to apartments</Button>
-              </NavLink>
-              <NavLink to={`/apartmentedit/${currentApartment.id}`}>
-                <Button>Edit apartment</Button>
-              </NavLink>
+              <Button>Back to apartments</Button>
+            </NavLink>
           </Card>
         )}
       </div>
@@ -67,3 +59,4 @@ const ApartmentShow = ({ apartments }) => {
 };
 
 export default ApartmentShow;
+

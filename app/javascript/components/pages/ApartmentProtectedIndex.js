@@ -1,7 +1,8 @@
 import React from "react";
 import { Card, CardBody, CardTitle, CardSubtitle, Button } from "reactstrap";
+import { NavLink } from "react-router-dom";
 
-const ApartmentProtectedIndex = ({ apartments, logged_in, current_user }) => {
+const ApartmentProtectedIndex = ({ apartments, logged_in, current_user, deleteApartment }) => {
   const current_user_apartments = apartments?.filter((apartment) => {
     return apartment.user_id === current_user.id;
   });
@@ -31,7 +32,15 @@ const ApartmentProtectedIndex = ({ apartments, logged_in, current_user }) => {
               <CardSubtitle className="mb-2 text-muted" tag="h6">
                 Bathrooms: {apartment.bathrooms}
               </CardSubtitle>
-              <Button>See More Details</Button>
+              <NavLink to={`/apartmentshow/${apartment.id}`}>
+                <Button>See More Details</Button>
+              </NavLink>
+              <NavLink to={`/apartmentedit/${apartment.id}`}>
+                <Button>Edit this listing</Button>
+              </NavLink>
+              <NavLink to="/">
+                <Button onClick={() => deleteApartment(`${apartment.id}`)}>Delete this listing</Button>
+              </NavLink>
             </CardBody>
           </Card>
         );
