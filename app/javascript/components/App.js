@@ -14,10 +14,11 @@ import NotFound from "./pages/NotFound";
 
 const App = (props) => {
   const [apartments, setApartments] = useState([]);
-
   useEffect(() => {
     readApartments()
   }, [])
+
+
 
   const readApartments = () => {
     fetch("/apartments")
@@ -29,8 +30,19 @@ const App = (props) => {
   }
 
   const createApartment = (apartment) => {
-    console.log(apartment)
+    fetch("http://localhost:3000/apartments", {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json", 
+      },
+      body: JSON.stringify({ apartment }),
+    })
+    .then((response) => response.json())     
+    .then(() => readApartments ()) 
+    .catch((error) => console.error(error))
   }
+
+
 
   const updateApartment = (apartment) => {
     console.log(apartment)
@@ -59,7 +71,7 @@ const App = (props) => {
           path="/apartmentshow/:id"
           element={<ApartmentShow {...props} apartments={apartments} />}
         />
-        <Route path="/apartmentnew" element={<ApartmentNew {...props} createApartment={createApartment}/>} />
+        <Route path="/apartmentnew" element={<ApartmentNew {...props} createApartment={createApartment} readApartments = {readApartments}/>} />
         <Route path="/apartmentedit/:id" element={<ApartmentEdit {...props} updateApartment={updateApartment} apartments={apartments}/>} />
         <Route element={<NotFound />} />
       </Routes>
