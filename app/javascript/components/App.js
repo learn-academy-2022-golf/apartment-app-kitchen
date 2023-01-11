@@ -30,36 +30,18 @@ const App = (props) => {
   }
 
   const createApartment = (apartment) => {
-        fetch("http://localhost:3000/apartments", {
-          method: "POST", 
-          headers: {
-            "Content-Type": "application/json", 
-          },
-          body: JSON.stringify({ apartment }),
-        })
-        .then((response) => response.json())     
-        .then(() => {
-          setApartments(apartment)
-          console.log("Created Apartment:", apartment)
-        })
-        .then(() => readApartments ()) 
-        .catch((error) => console.error(error))
-      }
+    fetch("http://localhost:3000/apartments", {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json", 
+      },
+      body: JSON.stringify({ apartment }),
+    })
+    .then((response) => response.json())     
+    .then(() => readApartments ()) 
+    .catch((error) => console.error(error))
+  }
 
-        // fetch("http://localhost:3000/apartments", 
-        // {
-        //   body: JSON.stringify(apartment),
-        //   headers: {
-        //     "Content-Type": "application/json"
-        // },
-        // method: "POST"
-        // })
-        //   .then((response) => response.json())
-        //   .then(() => readApartments ())
-        //   .catch((error) => console.log("Apartment create error:", error))
-        //   console.log("Created Apartment:", apartment)
-        // }
-        
 
 
   const updateApartment = (apartment) => {

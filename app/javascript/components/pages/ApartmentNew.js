@@ -23,9 +23,7 @@ const ApartmentNew = ({ createApartment, logged_in, current_user }) => {
   const handleSubmit = () => {
     newApartment.user_id = current_user.id
     createApartment(newApartment)
-    navigate("/apartmentindex")
-    document.location.reload()
-  }
+    navigate("/apartmentindex")  }
   if (logged_in === true) {
     return (
     <Form className="submitForm">
