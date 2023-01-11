@@ -22,7 +22,7 @@ const ApartmentEdit = ({ apartments, updateApartment, logged_in, current_user })
   const handleChange = (e) => {
     setEditApartment({ ...editApartment, [e.target.name]: e.target.value })
   }
-  const handleSubmit = () => {
+  const handleSubmit = (apartment) => {
     updateApartment(editApartment, currentApartment.id)
     navigate(`/apartmentshow/${id}`)
   }

@@ -15,42 +15,48 @@ import NotFound from "./pages/NotFound";
 const App = (props) => {
   const [apartments, setApartments] = useState([]);
   useEffect(() => {
-    readApartments()
-  }, [])
-
-
+    readApartments();
+  }, []);
 
   const readApartments = () => {
     fetch("/apartments")
       .then((response) => response.json())
       .then((payload) => {
-        setApartments(payload)
+        setApartments(payload);
       })
-      .catch((error) => console.log(error))
-  }
+      .catch((error) => console.log(error));
+  };
 
   const createApartment = (apartment) => {
     fetch("http://localhost:3000/apartments", {
-      method: "POST", 
+      method: "POST",
       headers: {
-        "Content-Type": "application/json", 
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ apartment }),
     })
-    .then((response) => response.json())     
-    .then(() => readApartments ()) 
-    .catch((error) => console.error(error))
-  }
+      .then((response) => response.json())
+      .then(() => readApartments())
+      .catch((error) => console.error(error));
+  };
 
-
-
-  const updateApartment = (apartment) => {
-    console.log(apartment)
-  }
+  const updateApartment = (apartment, id) => {
+    console.log(apartment, id)
+    fetch(`http://localhost:3000/apartments/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ apartment }),
+    })
+      .then((response) => response.json())
+      .then(() => readApartments())
+      .catch((error) => console.error(error));
+  };
 
   const deleteApartment = (id) => {
-    console.log(id)
-  }
+    console.log(id);
+  };
 
   return (
     <BrowserRouter>
@@ -64,15 +70,37 @@ const App = (props) => {
         <Route
           path="/myapartments"
           element={
-            <ApartmentProtectedIndex apartments={apartments} {...props} deleteApartment={deleteApartment} />
+            <ApartmentProtectedIndex
+              apartments={apartments}
+              {...props}
+              deleteApartment={deleteApartment}
+            />
           }
         />
         <Route
           path="/apartmentshow/:id"
           element={<ApartmentShow {...props} apartments={apartments} />}
         />
-        <Route path="/apartmentnew" element={<ApartmentNew {...props} createApartment={createApartment} readApartments = {readApartments}/>} />
-        <Route path="/apartmentedit/:id" element={<ApartmentEdit {...props} updateApartment={updateApartment} apartments={apartments}/>} />
+        <Route
+          path="/apartmentnew"
+          element={
+            <ApartmentNew
+              {...props}
+              createApartment={createApartment}
+              readApartments={readApartments}
+            />
+          }
+        />
+        <Route
+          path="/apartmentedit/:id"
+          element={
+            <ApartmentEdit
+              {...props}
+              updateApartment={updateApartment}
+              apartments={apartments}
+            />
+          }
+        />
         <Route element={<NotFound />} />
       </Routes>
       <Footer />
