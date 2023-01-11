@@ -1,7 +1,6 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import { Card, CardBody, CardTitle, CardSubtitle, Button } from "reactstrap";
-
 const ApartmentShow = ({ apartments }) => {
   const { id } = useParams();
   const currentApartment = apartments?.find(
@@ -49,6 +48,12 @@ const ApartmentShow = ({ apartments }) => {
                 Pets: {currentApartment.pets}
               </CardSubtitle>
             </CardBody>
+            <NavLink to={`/apartmentindex`}>
+                <Button>Back to apartments</Button>
+              </NavLink>
+              <NavLink to={`/apartmentedit/${currentApartment.id}`}>
+                <Button>Edit apartment</Button>
+              </NavLink>
           </Card>
         )}
       </div>

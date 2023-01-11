@@ -19,5 +19,7 @@ describe("<ApartmentShow />", () => {
   it("renders without crashing", () => {
     const div = document.createElement("div")
     render(<ApartmentShow />, div)
+    renderComponent();
+    expect(screen.getByText("Back to apartments")).toBeInTheDocument();
   })
 })
