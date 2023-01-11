@@ -47,6 +47,11 @@ const ApartmentShow = ({ apartments }) => {
               <CardSubtitle className="mb-2 text-muted" tag="h6">
                 Pets: {currentApartment.pets}
               </CardSubtitle>
+              <NavLink to={`/apartmentedit/${currentApartment.id}`}>
+                <Button>
+                  Edit apartment
+                </Button>
+              </NavLink>
             </CardBody>
             <NavLink to={`/apartmentindex`}>
                 <Button>Back to apartments</Button>
